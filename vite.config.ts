@@ -24,6 +24,10 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "client", "src"),
       "@shared": path.resolve(import.meta.dirname, "shared"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
+      "@/lib/ui-library": path.resolve(
+        import.meta.dirname,
+        "node_modules/GC-UI-COMPONENTS/client/src/lib/ui-library",
+      ),
     },
   },
   root: path.resolve(import.meta.dirname, "client"),

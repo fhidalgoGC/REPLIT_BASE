@@ -8,7 +8,11 @@
     "build": "tsx script/build.ts",
     "start": "NODE_ENV=production node dist/index.cjs",
     "check": "tsc",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "setup": "gc-ui-setup",
+    "setup:new-app": "gc-ui-setup new-app",
+    "setup:new-app:force": "gc-ui-setup new-app --force",
+    "setup:features": "gc-ui-setup features"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
