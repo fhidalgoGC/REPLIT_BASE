@@ -1,4 +1,5 @@
 import { SidebarLayout, useSidebarLayout } from "GC-UI-COMPONENTS/client/src/lib/ui-library/layouts/SidebarLayout";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -50,6 +51,34 @@ function Sidebar() {
   );
 }
 
+function LanguageSelector() {
+  const { lang, setLang, availableLanguages } = useLanguage();
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ fontSize: '14px' }}>Idioma:</span>
+      <select
+        data-testid="select-language"
+        value={lang}
+        onChange={(e) => setLang(e.target.value as 'es' | 'en')}
+        style={{
+          padding: '6px 12px',
+          borderRadius: '4px',
+          border: 'none',
+          fontSize: '14px',
+          cursor: 'pointer'
+        }}
+      >
+        {availableLanguages.map((language) => (
+          <option key={language} value={language}>
+            {language.toUpperCase()}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 function Toolbar() {
   return (
     <div 
@@ -60,10 +89,12 @@ function Toolbar() {
         color: 'white',
         padding: '16px',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'space-between'
       }}
     >
       <h3 style={{ margin: 0 }}>Mi Aplicacion</h3>
+      <LanguageSelector />
     </div>
   );
 }

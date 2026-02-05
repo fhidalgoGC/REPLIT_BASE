@@ -1,11 +1,11 @@
-import { AppLanguageProvider } from "GC-UI-COMPONENTS/client/src/lib/ui-library/providers/AppLanguageProvider/index.provider";
+import { LanguageProvider } from "@/providers/LanguageProvider";
 import AppRoutes from "@/routes";
 
 function App() {
   return (
-    <AppLanguageProvider initial="es">
+    <LanguageProvider initial="es">
       <AppRoutes />
-    </AppLanguageProvider>
+    </LanguageProvider>
   );
 }
 
