@@ -1,6 +1,26 @@
-// Feature routes - Auto-generated imports will be added below
-// {{FEATURE_IMPORTS}}
+import { MainLayout } from "@/layouts/main.layout";
+import { LoginLayout } from "@/layouts/login.layout";
+import { HomePage } from "@/pages/home";
+import { AboutPage } from "@/pages/about";
+import { LoginPage } from "@/pages/login";
 
-export const featureRoutes = [
-  // {{FEATURE_ROUTES}}
+export const publicRoutes = [
+  {
+    path: "/login",
+    component: LoginPage,
+    layout: LoginLayout,
+  },
 ];
+
+export const mainRoutes = [
+  {
+    path: "/",
+    component: HomePage,
+  },
+  {
+    path: "/about",
+    component: AboutPage,
+  },
+];
+
+export const mainLayout = MainLayout;

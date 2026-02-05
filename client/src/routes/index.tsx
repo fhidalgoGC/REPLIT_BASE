@@ -1,26 +1,33 @@
 import { Switch, Route } from "wouter";
-import { MainLayout } from "@/layouts/main.layout";
-import { LoginLayout } from "@/layouts/login.layout";
-import { HomePage } from "@/pages/home";
-import { AboutPage } from "@/pages/about";
-import { LoginPage } from "@/pages/login";
+import { publicRoutes, mainRoutes, mainLayout as MainLayout } from "./feature-routes";
 
 export default function AppRoutes() {
   return (
     <Switch>
-      {/* Rutas con LoginLayout */}
-      <Route path="/login">
-        <LoginLayout>
-          <LoginPage />
-        </LoginLayout>
-      </Route>
+      {/* Rutas publicas con sus propios layouts */}
+      {publicRoutes.map((route) => {
+        const Layout = route.layout;
+        const Component = route.component;
+        return (
+          <Route key={route.path} path={route.path}>
+            <Layout>
+              <Component />
+            </Layout>
+          </Route>
+        );
+      })}
 
       {/* Rutas con MainLayout */}
       <Route>
         <MainLayout>
           <Switch>
-            <Route path="/" component={HomePage} />
-            <Route path="/about" component={AboutPage} />
+            {mainRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                component={route.component}
+              />
+            ))}
             <Route>
               <div data-testid="page-not-found">
                 <h1>404 - Pagina no encontrada</h1>
