@@ -37,3 +37,16 @@ author = "agent"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Shell Command"
+mode = "sequential"
+author = 44036098
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run setup:new-app:force"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "sleep 3m"

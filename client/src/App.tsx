@@ -3,27 +3,34 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/not-found";
+import AppRoutes from "@/routes";
 
-function Router() {
-  return (
-    <Switch>
-      {/* Add pages below */}
-      {/* <Route path="/" component={Home}/> */}
-      {/* Fallback to 404 */}
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
+import {
+  AppLanguageProvider,
+  LibI18nProvider,
+  useAppLanguage,
+} from "GC-UI-COMPONENTS";
+
+const globalTranslationPaths = [
+  { lang: "es", path: "/i18n/es.json" },
+  { lang: "en", path: "/i18n/en.json" },
+];
 
 function App() {
+  const appLanguage = useAppLanguage();
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <LibI18nProvider
+      parentLanguageProvider={appLanguage}
+      globalTranslationPaths={globalTranslationPaths}
+      translationPriority="external-first"
+    >
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <AppRoutes />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </LibI18nProvider>
   );
 }
 
