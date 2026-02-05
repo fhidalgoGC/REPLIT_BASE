@@ -1,5 +1,11 @@
 {
   "app": {
-    "title": "New App"
+    "title": "My Application"
+  },
+  "layout": {
+    "menu": "Menu",
+    "home": "Home",
+    "about": "About",
+    "language": "Language"
   }
 }

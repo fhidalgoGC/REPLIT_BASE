@@ -1,26 +1,10 @@
 import { SidebarLayout, useSidebarLayout } from "GC-UI-COMPONENTS/client/src/lib/ui-library/layouts/SidebarLayout";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { translations } from "@/i18n";
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
-
-const translations = {
-  es: {
-    menu: "Menu",
-    appTitle: "Mi Aplicacion",
-    home: "Inicio",
-    about: "Acerca de",
-    language: "Idioma"
-  },
-  en: {
-    menu: "Menu",
-    appTitle: "My Application",
-    home: "Home",
-    about: "About",
-    language: "Language"
-  }
-};
 
 function Sidebar() {
   const { collapsed, toggleCollapse } = useSidebarLayout();
@@ -55,13 +39,13 @@ function Sidebar() {
       </button>
       {!collapsed && (
         <div>
-          <h3 style={{ margin: '0 0 16px 0' }}>{t.menu}</h3>
+          <h3 style={{ margin: '0 0 16px 0' }}>{t.layout.menu}</h3>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <a href="/" style={{ color: 'white', textDecoration: 'none' }} data-testid="link-home">
-              {t.home}
+              {t.layout.home}
             </a>
             <a href="/about" style={{ color: 'white', textDecoration: 'none' }} data-testid="link-about">
-              {t.about}
+              {t.layout.about}
             </a>
           </nav>
         </div>
@@ -76,7 +60,7 @@ function LanguageSelector() {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-      <span style={{ fontSize: '14px' }}>{t.language}:</span>
+      <span style={{ fontSize: '14px' }}>{t.layout.language}:</span>
       <select
         data-testid="select-language"
         value={lang}
@@ -116,7 +100,7 @@ function Toolbar() {
         justifyContent: 'space-between'
       }}
     >
-      <h3 style={{ margin: 0 }}>{t.appTitle}</h3>
+      <h3 style={{ margin: 0 }}>{t.app.title}</h3>
       <LanguageSelector />
     </div>
   );

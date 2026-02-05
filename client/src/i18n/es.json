@@ -1,5 +1,11 @@
 {
   "app": {
-    "title": "Nueva aplicación"
+    "title": "Mi Aplicacion"
+  },
+  "layout": {
+    "menu": "Menu",
+    "home": "Inicio",
+    "about": "Acerca de",
+    "language": "Idioma"
   }
 }
