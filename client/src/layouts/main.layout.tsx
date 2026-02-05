@@ -5,8 +5,27 @@ interface MainLayoutProps {
   children: React.ReactNode;
 }
 
+const translations = {
+  es: {
+    menu: "Menu",
+    appTitle: "Mi Aplicacion",
+    home: "Inicio",
+    about: "Acerca de",
+    language: "Idioma"
+  },
+  en: {
+    menu: "Menu",
+    appTitle: "My Application",
+    home: "Home",
+    about: "About",
+    language: "Language"
+  }
+};
+
 function Sidebar() {
   const { collapsed, toggleCollapse } = useSidebarLayout();
+  const { lang } = useLanguage();
+  const t = translations[lang];
 
   return (
     <div 
@@ -36,13 +55,13 @@ function Sidebar() {
       </button>
       {!collapsed && (
         <div>
-          <h3 style={{ margin: '0 0 16px 0' }}>Menu</h3>
+          <h3 style={{ margin: '0 0 16px 0' }}>{t.menu}</h3>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <a href="/" style={{ color: 'white', textDecoration: 'none' }} data-testid="link-home">
-              Inicio
+              {t.home}
             </a>
             <a href="/about" style={{ color: 'white', textDecoration: 'none' }} data-testid="link-about">
-              Acerca de
+              {t.about}
             </a>
           </nav>
         </div>
@@ -53,10 +72,11 @@ function Sidebar() {
 
 function LanguageSelector() {
   const { lang, setLang, availableLanguages } = useLanguage();
+  const t = translations[lang];
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-      <span style={{ fontSize: '14px' }}>Idioma:</span>
+      <span style={{ fontSize: '14px' }}>{t.language}:</span>
       <select
         data-testid="select-language"
         value={lang}
@@ -80,6 +100,9 @@ function LanguageSelector() {
 }
 
 function Toolbar() {
+  const { lang } = useLanguage();
+  const t = translations[lang];
+
   return (
     <div 
       data-testid="toolbar-section"
@@ -93,7 +116,7 @@ function Toolbar() {
         justifyContent: 'space-between'
       }}
     >
-      <h3 style={{ margin: 0 }}>Mi Aplicacion</h3>
+      <h3 style={{ margin: 0 }}>{t.appTitle}</h3>
       <LanguageSelector />
     </div>
   );
