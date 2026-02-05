@@ -1,14 +1,19 @@
 import { Switch, Route } from "wouter";
 import { MainLayout } from "@/layouts/main.layout";
+import { LoginLayout } from "@/layouts/login.layout";
 import { HomePage } from "@/pages/home";
 import { AboutPage } from "@/pages/about";
+import { LoginPage } from "@/pages/login";
 
 function App() {
   return (
     <Switch>
-      {/* Rutas publicas sin layout (login, registro, etc.) */}
-      {/* <Route path="/login" component={LoginPage} /> */}
-      {/* <Route path="/register" component={RegisterPage} /> */}
+      {/* Rutas con LoginLayout */}
+      <Route path="/login">
+        <LoginLayout>
+          <LoginPage />
+        </LoginLayout>
+      </Route>
 
       {/* Rutas con MainLayout */}
       <Route>
